@@ -53,7 +53,7 @@ public class SnakeGame extends PApplet {
                             }
                         } else if (this.UI.mousePos(this.mouseY, 380, 450)) {
                             this.gameState = 3;
-                        } else if (this.UI.mousePos(this.mouseY, 480, 550)) {
+                        } else if (this.UI.mousePos(this.mouseY, 520, 560)) {
                             exit();
                         }
                     }
@@ -143,11 +143,11 @@ public class SnakeGame extends PApplet {
 
     public void fruitLogic() {
         for (int i = 0; i < this.fruits.length; i++) {
-            if (!this.snake[i].isFlying && (this.fruits[i].isCollectable && this.snake[0].isColliding(this.fruits[i]) )) {
+            if (!this.snake[0].isFlying && (this.fruits[i].isCollectable && this.snake[0].isColliding(this.fruits[i]) )) {
                 switch (this.fruits[i].fruitType) {
                     case STARFRUIT -> {
                         if (this.UI.collectedEnoughStarFruits()) {
-                            this.snakeLength = this.snakeLength/2;
+                            this.snakeLength = this.snakeLength/2 + 1;
                             this.snake = this.Constructor.removeSnakePart(this.snakeLength);
                         }
                         this.UI.lastFruitCollected = this.fruits[i].fruitType;
